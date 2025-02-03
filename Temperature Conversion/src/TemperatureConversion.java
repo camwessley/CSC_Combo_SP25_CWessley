@@ -15,5 +15,5 @@ public class TemperatureConversion {
         //if (kTemp < 0) System.out.println("\nNegative Kelvin temperature; normalizing to 0"); kTemp = 0;
 
         System.out.println("Entered temperature " + fTemp + "F in:\nCelcius: " + cTemp + "C\nKelvin: " + kTemp + "K");
-        }
+    }
 }
