@@ -15,5 +15,6 @@ public class IoPractice {
         String lName = input.next();
 
         System.out.println("Your full name: " + fName + " " + lName);
+
     }
 }
