@@ -31,4 +31,3 @@ public class AmPm {
         System.out.printf("%d:%d %s\n", hour, minute, amPm);
     }
 }
-import java.sql.SQLOutput;
