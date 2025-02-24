@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class AmPm {
@@ -32,3 +31,4 @@ public class AmPm {
         System.out.printf("%d:%d %s\n", hour, minute, amPm);
     }
 }
+import java.sql.SQLOutput;
