@@ -42,7 +42,7 @@ public class Scrabble {
 
                 if (c == tileArray[i]) {
 
-                    // Mark the tile as used
+                    // Mark the tile as used with null char
                     tileArray[i] = '\0';
                     found = true;
 
