@@ -8,12 +8,12 @@ public class Divider {
         double firstNum = input.nextDouble();
         input.nextLine();
 
-        System.out.print("Enter the second number:\n> ");
+        System.out.print("Enter the second number to divide by:\n> ");
         double secondNum = input.nextDouble();
         input.nextLine();
 
         if (secondNum == 0) {
-            System.out.print("Cannot divide by zero\nEnter the second number:\n> ");
+            System.out.print("Cannot divide by zero\nEnter the second number to divide by:\n> ");
             secondNum = input.nextDouble();
             input.nextLine();
         }
