@@ -9,7 +9,7 @@ public class Main {
             board(gameState);
             move(gameState, player, choice);
 
-            count++;f
+            count++;
 
             player = player % 2 + 1;
         }
