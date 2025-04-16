@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Grid extends Canvas {
-    private final Cell[][] array;
+    private Cell[][] array;
 
     public Grid(int rows, int cols, int size) {
         array = new Cell[rows][cols];
@@ -33,4 +33,11 @@ public class Grid extends Canvas {
 
     public void turnOn(int r, int c) {array[r][c].turnOn();}
     public void turnOff(int r, int c) {array[r][c].turnOff();}
+
+    public int test(int r, int c) {
+        try {
+            if (array[r][c].isOn()) return 1;
+        } catch (ArrayIndexOutOfBoundsException e) {}
+        return 0;
+    }
 }

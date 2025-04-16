@@ -2,8 +2,8 @@ import javax.swing.*;
 
 public class CGOLDriver {
     public static void main(String[] args) {
-        int rows = 15;
-        int cols = 30;
+        int rows = 50;
+        int cols = 50;
         int size = 20;
 
         Cell[][] array = new Cell[rows][cols];
@@ -17,5 +17,7 @@ public class CGOLDriver {
         frame.add(game.getGrid());
         frame.pack();
         frame.setVisible(true);
+
+        game.mainLoop();
     }
 }
