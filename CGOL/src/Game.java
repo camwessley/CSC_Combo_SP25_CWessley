@@ -17,8 +17,8 @@ public class Game {
 
     public void mainLoop() {
         while (true) {
-            grid.repaint();
             this.update();
+            grid.repaint();
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {}
@@ -46,9 +46,9 @@ public class Game {
         if (cell.isOn()) {
             if (count < 2 || count > 3) {
                 cell.turnOff();
-            } else {
-                cell.turnOn();
             }
+        } else if (count == 3) {
+            cell.turnOn();
         }
     }
 
