@@ -1,16 +1,19 @@
+import java.util.Random;
+
 public class Game {
     Grid grid;
 
     public Game(int r, int c, int s) {
         grid = new Grid(r, c, s);
-        grid.turnOn(2,2);
-        grid.turnOn(2,3);
-        grid.turnOn(3,2);
-        grid.turnOn(3,3);
 
-        grid.turnOn(8,8);
-        grid.turnOn(8,9);
-        grid.turnOn(8,10);
+        for (int row = 0; row < grid.numRows(); row++) {
+            for (int col = 0; col < grid.numCols(); col++) {
+                Random rand  = new Random();
+                if (rand.nextInt(2) == 1) {
+                    grid.turnOn(row,col);
+                }
+            }
+        }
     }
 
     public Grid getGrid() {return grid;}
@@ -20,7 +23,7 @@ public class Game {
             this.update();
             grid.repaint();
             try {
-                Thread.sleep(2000);
+                Thread.sleep(200);
             } catch (InterruptedException e) {}
         }
     }
