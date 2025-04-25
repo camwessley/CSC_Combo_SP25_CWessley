@@ -24,6 +24,10 @@ public class Animal {
         this.height = height;
     }
 
+    public void animalSound() {
+        System.out.println("Moooooo");
+    }
+
     @Override
     public String toString() {
         return "Animal{" +
