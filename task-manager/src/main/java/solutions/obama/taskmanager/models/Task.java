@@ -39,7 +39,7 @@ public class Task {
         this.dueDate = dueDate;
     }
 
-    // Getters and Setters (omitted for brevity, but essential)
+    // Getters and Setters
     public int getId() {
         return id;
     }

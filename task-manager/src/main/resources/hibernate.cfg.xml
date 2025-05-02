@@ -10,7 +10,7 @@
         <property name="connection.url">jdbc:sqlite:tasks.db</property>
         <property name="connection.pool_size">1</property>
         <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.hbmddl.auto">create</property>  <!-- create, update, none -->
+        <property name="hibernate.hbm2ddl.auto">update</property>  <!-- create, update, none -->
         <mapping class="solutions.obama.taskmanager.models.Task"/>
     </session-factory>
 </hibernate-configuration>

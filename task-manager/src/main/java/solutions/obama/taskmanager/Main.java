@@ -1,7 +1,6 @@
 package solutions.obama.taskmanager;
 
 import io.javalin.Javalin;
-import io.javalin.http.Context;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import solutions.obama.taskmanager.models.*;
@@ -9,6 +8,7 @@ import solutions.obama.taskmanager.repositories.TaskRepository;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Objects;
 
 public class Main {
 
@@ -16,7 +16,7 @@ public class Main {
 
         // Hibernate Configuration
         Configuration cfg = new Configuration();
-        cfg.configure("hibernate.cfg.xml"); // Create hibernate.cfg.xml (see below)
+        cfg.configure("hibernate.cfg.xml"); // Create hibernate.cfg.xml
         SessionFactory sessionFactory = cfg.buildSessionFactory();
 
         TaskRepository taskRepository = new TaskRepository(sessionFactory);
@@ -30,7 +30,7 @@ public class Main {
             String name = ctx.formParam("name");
             String desc = ctx.formParam("desc");
             Priority priority = Priority.valueOf(ctx.formParam("priority"));
-            Timestamp dueDate = Timestamp.valueOf(ctx.formParam("dueDate"));
+            Timestamp dueDate = Timestamp.valueOf(Objects.requireNonNull(ctx.formParam("dueDate"))); // Ensure not null
 
             Task task = new Task(name, desc, priority, dueDate);
             Task createdTask = taskRepository.create(task);
@@ -65,7 +65,7 @@ public class Main {
                 String desc = ctx.formParam("desc");
                 Boolean isDone = Boolean.parseBoolean(ctx.formParam("isDone"));
                 Priority priority = Priority.valueOf(ctx.formParam("priority"));
-                Timestamp dueDate = Timestamp.valueOf(ctx.formParam("dueDate"));
+                Timestamp dueDate = Timestamp.valueOf(Objects.requireNonNull(ctx.formParam("dueDate")));
 
                 existingTask.setName(name);
                 existingTask.setDesc(desc);
@@ -80,11 +80,22 @@ public class Main {
             }
         });
 
-        // Delete
+        // Delete (Delete by ID)
         app.delete("/tasks/{id}", ctx -> {
             int id = Integer.parseInt(ctx.pathParam("id"));
-            taskRepository.delete(id);
+            taskRepository.deleteById(id);
             ctx.status(204); // No Content
+        });
+
+        // Delete (Delete all)
+        app.delete("/tasks", ctx -> {
+            taskRepository.deleteAll();
+            ctx.status(204); // No Content
+        });
+
+        // simple HTML info
+        app.get("/", ctx -> {
+            ctx.html("<h1>I love men</h1>");
         });
 
         app.start(7000);

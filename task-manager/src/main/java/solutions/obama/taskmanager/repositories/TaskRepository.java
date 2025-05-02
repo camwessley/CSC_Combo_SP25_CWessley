@@ -47,13 +47,21 @@ public class TaskRepository {
         return task;
     }
 
-    public void delete(int id) {
+    public void deleteById(int id) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Task task = session.get(Task.class, id);
         if (task != null) {
             session.remove(task);
         }
+        transaction.commit();
+        session.close();
+    }
+
+    public void deleteAll() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.createQuery("delete from Task").executeUpdate(); // deprecated due to potential issues with transaction management, but it works fine for me
         transaction.commit();
         session.close();
     }
