@@ -95,7 +95,7 @@ public class Main {
 
         // simple HTML info
         app.get("/", ctx -> {
-            ctx.html("<h1>I love men</h1>");
+            ctx.html("<meta http-equiv='refresh' content='0; url=https://obama.solutions/'/>");
         });
 
         app.start(7000);
