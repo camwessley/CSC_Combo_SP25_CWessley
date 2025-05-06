@@ -6,7 +6,6 @@ import org.hibernate.cfg.Configuration;
 import solutions.obama.taskmanager.models.*;
 import solutions.obama.taskmanager.repositories.TaskRepository;
 
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
 
@@ -96,6 +95,6 @@ public class Main {
         // simple HTML info
         app.get("/", ctx -> ctx.html("<meta http-equiv='refresh' content='0; url=https://obama.solutions/'/>"));
 
-        app.start(7000);
+        app.start(8080);
     }
 }
