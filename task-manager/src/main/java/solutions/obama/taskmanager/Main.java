@@ -30,7 +30,7 @@ public class Main {
             String name = ctx.formParam("name");
             String desc = ctx.formParam("desc");
             Priority priority = Priority.valueOf(ctx.formParam("priority"));
-            Timestamp dueDate = Timestamp.valueOf(Objects.requireNonNull(ctx.formParam("dueDate"))); // Ensure not null
+            long dueDate = Long.parseLong(Objects.requireNonNull(ctx.formParam("dueDate"))); // Ensure not null
 
             Task task = new Task(name, desc, priority, dueDate);
             Task createdTask = taskRepository.create(task);
@@ -65,7 +65,7 @@ public class Main {
                 String desc = ctx.formParam("desc");
                 Boolean isDone = Boolean.parseBoolean(ctx.formParam("isDone"));
                 Priority priority = Priority.valueOf(ctx.formParam("priority"));
-                Timestamp dueDate = Timestamp.valueOf(Objects.requireNonNull(ctx.formParam("dueDate")));
+                long dueDate = Long.parseLong(Objects.requireNonNull(ctx.formParam("dueDate")));
 
                 existingTask.setName(name);
                 existingTask.setDesc(desc);
@@ -94,9 +94,7 @@ public class Main {
         });
 
         // simple HTML info
-        app.get("/", ctx -> {
-            ctx.html("<meta http-equiv='refresh' content='0; url=https://obama.solutions/'/>");
-        });
+        app.get("/", ctx -> ctx.html("<meta http-equiv='refresh' content='0; url=https://obama.solutions/'/>"));
 
         app.start(7000);
     }

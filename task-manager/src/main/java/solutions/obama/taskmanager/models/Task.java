@@ -1,8 +1,6 @@
 package solutions.obama.taskmanager.models;
 
 import jakarta.persistence.*;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tasks")
@@ -22,17 +20,18 @@ public class Task {
     private Boolean isDone = false;
 
     @Column(nullable = false)
-    private Timestamp startDate = Timestamp.valueOf(LocalDateTime.now());
+    private long startDate = System.currentTimeMillis();
 
-    private Timestamp dueDate;
+    private long dueDate;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Priority priority;
 
-    public Task() {}
+    public Task() {
+    }
 
-    public Task(String name, String desc, Priority priority, Timestamp dueDate) {
+    public Task(String name, String desc, Priority priority, long dueDate) {
         this.name = name;
         this.desc = desc;
         this.priority = priority;
@@ -72,19 +71,19 @@ public class Task {
         this.isDone = isDone;
     }
 
-    public Timestamp getStartDate() {
+    public long getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Timestamp startDate) {
+    public void setStartDate(long startDate) {
         this.startDate = startDate;
     }
 
-    public Timestamp getDueDate() {
+    public long getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Timestamp dueDate) {
+    public void setDueDate(long dueDate) {
         this.dueDate = dueDate;
     }
 
