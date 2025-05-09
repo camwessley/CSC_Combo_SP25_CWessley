@@ -92,9 +92,6 @@ public class Main {
             ctx.status(204); // No Content
         });
 
-        // simple HTML info
-        app.get("/", ctx -> ctx.html("<meta http-equiv='refresh' content='0; url=https://obama.solutions/'/>"));
-
         app.start(8080);
     }
 }
