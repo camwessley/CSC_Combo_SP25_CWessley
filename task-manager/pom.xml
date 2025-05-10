@@ -45,11 +45,6 @@
             <artifactId>hibernate-community-dialects</artifactId>
             <version>6.6.13.Final</version>
         </dependency>
-        <dependency>
-            <groupId>io.javalin.community.ssl</groupId>
-            <artifactId>ssl-plugin</artifactId>
-            <version>6.6.0</version>
-        </dependency>
     </dependencies>
 
     <packaging>jar</packaging>
